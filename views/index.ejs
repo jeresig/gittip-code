@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>This is a simple tool for finding all the contributors to a Github repo, or an NPM module, on <a href="https://www.gittip.com/">Gittip</a>, so that you can give them a little bit of money!</p>
+    <h3>Tip by Github Repo</h3>
+    <form action="/github" method="GET">
+        Github Repo: <input type="text" name="user" placeholder="user"/>/<input type="text" name="repo" placeholder="repo"/>
+        <input type="submit" value="View Gittip Users"/>
+    </form>
+    <p>Some sample repos:
+        <a href="/github/jquery/jquery">jquery</a>,
+        <a href="/github/twitter/bootstrap">bootstrap</a>,
+        <a href="/github/ruby/ruby">ruby</a>,
+        <a href="/github/mitsuhiko/flask">flask</a>.
+    </p>
+    <h3>Tip by NPM Module</h3>
+    <form action="/npm" method="GET">
+        NPM module name: <input type="text" name="name"/>
+        <input type="submit" value="View Gittip Users"/>
+    </form>
+    <p>Some sample modules:
+        <a href="/npm/express">express</a>,
+        <a href="/npm/i18n-2">i18n-2</a>,
+        <a href="/npm/optimist">optimist</a>,
+        <a href="/npm/socket.io">socket.io</a>.
+    </p>
+    <h3>How it Works</h3>
+    <p>Gittip users are found for a repo by:</p>
+    <ol>
+        <li>(NPM modules only) Downloading the package data for the module and all of its dependencies.</li>
+        <li>Locating the Github repo URL for the module, if it exists, and downloading the contributors list. (For NPM modules this is done for the main repo and all of its dependencies, as well.)</li>
+        <li>Looking up the contributors' Github usernames on <a href="https://www.gittip.com/">Gittip</a> to see if that user has an account.</li>
+    </ol>
+    <p>Only users who 1) Have an active Gittip account and 2) Whose Github accounts are linked to their Gittip accounts and 3) Their Github account is a contributor to the repo will be found.</p>
+    <h3>About</h3>
+    <p>This utility was created by <a href="http://ejohn.org/">John Resig</a> to try and encourage more developers to use, and tip others through, <a href="https://www.gittip.com/">Gittip</a>.</p>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><a href="https://www.gittip.com/">Gittip</a> NPM Module: <a href="https://npmjs.org/package/<%= module %>"><%= module %></a></h1>
+    <% if (users && users.length) { %>
+    <ul>
+        <% users.forEach(function(user) { %>
+            <li><% if (user.weight > 1) { %>
+                <strong><%= user.weight %>x</strong>
+                <% } %>
+                <span class='user'><a href='https://www.gittip.com/<%= user.user %>/'><%= user.user %></a></span>
+                <iframe style="border: 0; margin: 0; padding: 0;"
+                        src="https://www.gittip.com/<%= user.user %>/widget.html"
+                        width="48pt" height="22pt"></iframe></li>
+        <% }) %>
+    </ul>
+    <% } else { %>
+        <p>This repository has no active users on <a href="https://www.gittip.com/">Gittip</a>!</p>
+    <% } %>
+    <p>Don't see someone listed here? You should <a href="https://npmjs.org/package/<%= module %>">contact them</a> and tell them to join <a href="https://www.gittip.com/">Gittip</a>!</p>
+    <p><a href="/">Find another NPM module to tip!</a></p>
+  </body>
+</html>
